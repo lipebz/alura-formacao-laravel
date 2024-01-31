@@ -16,4 +16,9 @@ class SeriesController extends Controller
 
         return view('pages.series.index', compact('series'));
     }
+
+    public function create()
+    {
+        return view('pages.series.create');
+    }
 }

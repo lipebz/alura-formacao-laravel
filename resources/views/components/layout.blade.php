@@ -9,9 +9,14 @@
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 </head>
 <body>
-    <h1>{{ $title }}</h1>
 
-    {{ $slot }}
+    <main class="container p-5">
+
+        <h1 class="mb-5">{{ $title }}</h1>
+        
+        {{ $slot }}
+        
+    </main>
 
 </body>
 </html>

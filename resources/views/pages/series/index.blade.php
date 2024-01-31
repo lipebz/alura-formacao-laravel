@@ -1,7 +1,7 @@
 <x-layout title="Séries">
-    <ul>
-        @foreach ($series as $serie)
-            <li>{{ $serie }}</li>
-        @endforeach
-    </ul>
+
+    <x-link-button href="{{ route('series.create') }}" >Adicionar</x-link-button>
+
+    <x-list :data="$series" />
+
 </x-layout>
