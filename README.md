@@ -29,7 +29,9 @@ INICIALIZE O SERVIDOR
 
 sail up -d
 
-sail artisan key generate
+chmod 777 ./ -R
+
+sail artisan key:generate
 
 sail artisan migrate
 
