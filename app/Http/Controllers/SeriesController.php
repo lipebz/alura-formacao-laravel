@@ -11,7 +11,7 @@ class SeriesController extends Controller
 {
     public function index(Request $request)
     {
-        $series = Serie::orderBy('nome')->get();
+        $series = Serie::all();
 
         $message = session('message');
 
