@@ -25,6 +25,7 @@ class SeriesController extends Controller
 
     public function edit(Serie $serie)
     {
+
         return view('pages.series.edit')->with('serie', $serie);
     }
 
