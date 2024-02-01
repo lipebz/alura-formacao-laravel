@@ -6,6 +6,12 @@ use Illuminate\Support\Facades\Route;
 
 Route::redirect('/', '/series');
 
-Route::get('/series', [SeriesController::class, 'index'])->name('series.index');
-Route::get('/series/criar', [SeriesController::class, 'create'])->name('series.create');
-Route::post('/series', [SeriesController::class, 'store'])->name('series.store');
+Route::controller(SeriesController::class)->group(function () {
+
+    Route::get('/series', 'index')->name('series.index');
+    Route::get('/series/cadastro', 'create')->name('series.create');
+    Route::post('/series', 'store')->name('series.store');
+    Route::delete('/series/{id}', 'destroy')->name('series.destroy');
+
+});
+
