@@ -22,6 +22,11 @@ class SeriesController extends Controller
         return view('pages.series.create');
     }
 
+    public function edit(Serie $serie)
+    {
+        return view('pages.series.edit')->with('serie', $serie);
+    }
+
     public function store(Request $request)
     {
         $data = $request->validate([
@@ -36,6 +41,23 @@ class SeriesController extends Controller
         return to_route('series.index')->with('message', [
             'type' => 'success',
             'text' => "Série {$serie->nome} criada com sucesso"
+        ]);
+    }
+
+    public function update(Serie $serie, Request $request)
+    {
+
+        $request->validate([
+            'nome' =>'required|string|max:128'
+        ]);
+
+        $serie->nome = $request->nome;
+
+        $serie->save();
+
+        return to_route('series.index')->with('message', [
+            'type' => 'primary',
+            'text' => "Série {$serie->nome} editada com sucesso"
         ]);
     }
 

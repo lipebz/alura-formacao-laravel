@@ -10,8 +10,12 @@ Route::controller(SeriesController::class)->group(function () {
 
     Route::get('/series', 'index')->name('series.index');
     Route::get('/series/cadastro', 'create')->name('series.create');
+    Route::get('/series/{serie}', 'edit')->name('series.edit');
+
+
     Route::post('/series', 'store')->name('series.store');
     Route::delete('/series/{serie}', 'destroy')->name('series.destroy');
+    Route::put('/series/{serie}', 'update')->name('series.update');
 
 });
 
