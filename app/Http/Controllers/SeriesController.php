@@ -28,25 +28,26 @@ class SeriesController extends Controller
             'nome' =>'required|string|max:128'
         ]);
 
-        $insert = Serie::create($data);
+        $serie = Serie::create($data);
 
-        if (!$insert)
+        if (!$serie)
             return 'erro';
 
-        return redirect()->route('series.index');
+        return to_route('series.index')->with('message', [
+            'type' => 'success',
+            'text' => "Série {$serie->nome} criada com sucesso"
+        ]);
     }
 
-    public function destroy(Request $request)
+    public function destroy(Serie $serie)
     {
 
-        Serie::destroy($request->id);
+        $serie->delete();
 
-        $request->session()->flash('message', [
+        return to_route('series.index')->with('message', [
             'type' => 'danger',
-            'text' => 'Deletado com sucesso'
+            'text' => "Série {$serie->nome} deletada com sucesso"
         ]);
-
-        return to_route('series.index');
 
     }
 }
