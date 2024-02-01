@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\SeriesFormRequest;
 use App\Models\Serie;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -27,16 +28,10 @@ class SeriesController extends Controller
         return view('pages.series.edit')->with('serie', $serie);
     }
 
-    public function store(Request $request)
+    public function store(SeriesFormRequest $request)
     {
-        $data = $request->validate([
-            'nome' =>'required|string|max:128'
-        ]);
 
-        $serie = Serie::create($data);
-
-        if (!$serie)
-            return 'erro';
+        $serie = Serie::create($request->all());
 
         return to_route('series.index')->with('message', [
             'type' => 'success',
@@ -44,12 +39,8 @@ class SeriesController extends Controller
         ]);
     }
 
-    public function update(Serie $serie, Request $request)
+    public function update(Serie $serie, SeriesFormRequest $request)
     {
-
-        $request->validate([
-            'nome' =>'required|string|max:128'
-        ]);
 
         $serie->nome = $request->nome;
 
