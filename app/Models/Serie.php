@@ -15,6 +15,10 @@ class Serie extends Model
         'nome'
     ];
 
+    protected $with = [
+        'seasons',
+    ];
+
     public function seasons(): HasMany
     {
         return $this->hasMany(Season::class);

@@ -1,7 +1,7 @@
 <ul class="list-group">
     @foreach ($data as $item)
         <li class="list-group-item d-flex justify-content-between align-items-center">
-            <p class="m-0">{{ $item->$value }}</p>
+            <a href="{{ route('series.seasons.index', $item->$primary) }}" class="m-0">{{ $item->$value }}</a>
             <div class="list-actions d-flex column-gap-3">
                 <form action="{{ route('series.destroy', $item->$primary) }}" method="POST">
                     @csrf

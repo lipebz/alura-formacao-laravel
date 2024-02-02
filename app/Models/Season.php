@@ -11,6 +11,11 @@ class Season extends Model
 {
     use HasFactory;
 
+    protected $with = [
+        'episodes',
+    ];
+
+
     public function serie(): BelongsTo
     {
         return $this->belongsTo(Serie::class);

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\SeasonController;
 use App\Http\Controllers\SeriesController;
 use Illuminate\Support\Facades\Route;
 
@@ -19,3 +20,4 @@ Route::controller(SeriesController::class)->group(function () {
 
 });
 
+Route::get('/series/{serie}/seasons', [SeasonController::class, 'index'])->name('series.seasons.index');
