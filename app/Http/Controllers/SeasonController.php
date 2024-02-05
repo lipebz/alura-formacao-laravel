@@ -9,6 +9,6 @@ class SeasonController extends Controller
 {
     public function index(Serie $serie)
     {
-        return view('pages.series.seasons.index', compact('serie'));
+        return view('pages.seasons.index', compact('serie'));
     }
 }

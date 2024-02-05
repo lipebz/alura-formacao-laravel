@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\EpisodeController;
 use App\Http\Controllers\SeasonController;
 use App\Http\Controllers\SeriesController;
+use App\Models\Episode;
 use Illuminate\Support\Facades\Route;
 
 
@@ -20,4 +22,7 @@ Route::controller(SeriesController::class)->group(function () {
 
 });
 
-Route::get('/series/{serie}/seasons', [SeasonController::class, 'index'])->name('series.seasons.index');
+Route::get('/series/{serie}/seasons', [SeasonController::class, 'index'])->name('seasons.index');
+
+Route::get('/series/{serie}/seasons/{season}', [EpisodeController::class, 'index'])->name('episodes.index');
+Route::post('/series/{serie}/seasons/{season}', [EpisodeController::class, 'watch'])->name('episodes.watch');
