@@ -10,6 +10,10 @@
 </head>
 <body>
 
+    @auth
+        <x-navbar />
+    @endauth
+
     <main class="container p-5">
 
         <h1 class="mb-5">{{ $title }}</h1>
